@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import BeerEntryList from './components/BeerEntryList.jsx';
 import EntryForm from './components/EntryForm.jsx';
+import $ from 'jquery';
 
 // dummy data
 const list = [
@@ -19,11 +20,29 @@ class App extends React.Component {
     return (
       <div>
         <div id="entry-form">
-          <EntryForm />
+          <EntryForm submit={this.submit}/>
         </div>
         <BeerEntryList list={list}/>
       </div>
     );
+  }
+
+  submit() {
+    let ajaxOptions = {
+      url: 'http://localhost:8332/list',
+      method: 'POST',
+      contentType: 'application/json',
+      data: this.state
+    };
+
+    $.ajax(ajaxOptions)
+      .done((data) => {
+        console.log('Submitted: ', this.state.name + ' ' + this.state.rating + ' ' + this.state.description);
+      })
+      .fail(() => {
+        console.log('AJAX error');
+      });
+
   }
 }
 

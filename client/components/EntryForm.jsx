@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 class EntryForm extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       name: '',
       rating: '',
@@ -11,7 +11,7 @@ class EntryForm extends React.Component {
     };
 
     this.getValue = this.getValue.bind(this);
-    this.submit = this.submit.bind(this);
+    this.submit = this.props.submit.bind(this);
   }
 
   getValue(e) {
@@ -21,13 +21,6 @@ class EntryForm extends React.Component {
     state[key] = value;
 
     this.setState(state);
-  }
-
-  submit() {
-    // TODO:
-    // actually submit
-    // move up to app component
-    console.log('Submitted: ', this.state.name + ' ' + this.state.rating + ' ' + this.state.description);
   }
 
   render() {
