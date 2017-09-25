@@ -1,4 +1,5 @@
 # Project Name #
+HOPPY THOUGHTS
 
 <!-- 
 > This material was originally posted [here](http://www.quora.com/What-is-Amazons-approach-to-product-development-and-product-management). It is reproduced here for posterities sake.
@@ -18,27 +19,35 @@ Once the project moves into development, the press release can be used as a touc
  
 ## Heading ##
   > Name the product in a way the reader (i.e. your target customers) will understand.
+  Beer journal
 
 ## Sub-Heading ##
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  A tasting journal for craft beer enthusiasts
 
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  Keep track of the beers you have tried and store your opinions on them alongside a quick reference to information on those beers.
 
 ## Problem ##
   > Describe the problem your product solves.
+  Beer enthusiasts try so many beers that it's hard to keep track of your opinions on each one, or even keep track of which they've tried.
 
 ## Solution ##
   > Describe how your product elegantly solves the problem.
+  Save all the beers that you've tried and your notes on them so you can revisit old favorites or know which to avoid being burned by again.
 
 ## Quote from You ##
   > A quote from a spokesperson in your company.
+  Stuck at the bar trying to decide what to drink? Too many choices on the menu? Pull up a list of your favorites with HOPPY THOUGHTS!
 
 ## How to Get Started ##
   > Describe how easy it is to get started.
+  Just enter the name of the beer that you tried and your thoughts on it. That entry will be stored in your beer journal alongside a link to more information on the beer.
 
 ## Customer Quote ##
   > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  I used to always forget some of the great beers I found. Now I can save my ratings
 
 ## Closing and Call to Action ##
   > Wrap it up and give pointers where the reader should go next.
