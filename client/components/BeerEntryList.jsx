@@ -11,7 +11,6 @@ const BeerEntryList = (props) => {
 
   return (
     <div className='beer-entry-list'>
-      List goes here
       {renderedEntries}
     </div>
   );  
