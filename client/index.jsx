@@ -5,6 +5,13 @@ import ReactDOM from 'react-dom';
 import BeerEntryList from './components/BeerEntryList.jsx';
 import EntryForm from './components/EntryForm.jsx';
 
+// dummy data
+const list = [
+  {name: 'Campfire Stout', rating: '2', description: 'Tasted like campfires, gross'},
+  {name: 'Worst Beer Ever', rating: '10', description: 'Sooo good'},
+  {name: 'Dolphin Blue Brew', rating: '7', description: 'Fresh taste but made from dolphins :('}
+];
+
 class App extends React.Component {
   constructor() {
     super();
@@ -18,7 +25,7 @@ class App extends React.Component {
         </div>
 
         <div>App rendered</div>
-        <BeerEntryList />
+        <BeerEntryList list={list}/>
       </div>
     );
   }

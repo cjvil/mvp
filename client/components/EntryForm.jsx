@@ -14,7 +14,10 @@ class EntryForm extends React.Component {
   render() {
     return (
       <div>
-        <div>EntryForm rendered</div>
+        <input type="text" className="name"></input>
+        <input type="text" className="rating"></input>
+        <input type="text" className="comments"></input>
+        <button className="submit">Submit</button>
       </div>
     );
   }
