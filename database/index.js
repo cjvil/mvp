@@ -14,7 +14,7 @@ db.once('open', () => {
 
   const Beer = mongoose.model('Beer', beerSchema);
 
-  const addEntry = (beer) => {
+  const addEntry = (beer, callback) => {
     console.log('adding entry');
 
     let beerEntry = new Beer({
@@ -25,10 +25,12 @@ db.once('open', () => {
 
     beerEntry.save((err, result) => {
       console.log('saved entry, ', result);
+      callback(result);
     });
+
   };
 
-  const retrieveAllEntries = () => {
+  const retrieveAllEntries = (callback) => {
     console.log('retrieving all entries');
 
     Beer.find((err, results) => {
@@ -36,6 +38,11 @@ db.once('open', () => {
         console.log('ERROR ' + err);
       }
       console.log('found: ', results);
+      callback(results);
     });
   };
+
+  module.exports.addEntry = addEntry;
+  module.exports.retrieveAllEntries = retrieveAllEntries;
 });
+
