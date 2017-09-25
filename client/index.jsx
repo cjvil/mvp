@@ -1,16 +1,29 @@
-console.log('Hello console!!!');
+console.log('App loaded');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import BeerEntryList from './components/BeerEntryList.jsx';
+import EntryForm from './components/EntryForm.jsx';
 
 class App extends React.Component {
+  constructor() {
+    super();
+  }
+
   render() {
     return (
-      <div>App rendered</div>
+      <div>
+        <div id="entry-form">
+          <EntryForm />
+        </div>
+
+        <div>App rendered</div>
+        <BeerEntryList />
+      </div>
     );
   }
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
 
-// Don't forget to export
+export default App;
