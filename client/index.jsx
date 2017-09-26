@@ -61,12 +61,6 @@ class App extends React.Component {
       })
     };
 
-    // console.log(context);
-    // oooooh I can either have the correct binding for getlist or submit
-    // getlist should be bound to app
-    // submit should be bound to form
-    // save context as var
-
     $.ajax(ajaxOptions)
       .done((data) => {
         this.getList();
