@@ -32,7 +32,7 @@ class App extends React.Component {
       url: 'http://localhost:8332/list',
       method: 'POST',
       contentType: 'application/json',
-      data: this.state
+      data: JSON.stringify(this.state)
     };
 
     $.ajax(ajaxOptions)
