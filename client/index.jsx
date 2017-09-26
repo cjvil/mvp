@@ -114,17 +114,16 @@ class App extends React.Component {
 
   submit(rating, description) {
     console.log('submitting abv, ', this.state.selected.abv);
+
+    let beer = this.state.selected;
+    beer.rating = rating;
+    beer.description = description;
+
     let ajaxOptions = {
       url: 'http://localhost:8332/list',
       method: 'POST',
       contentType: 'application/json',
-      data: JSON.stringify({
-        // name: name,
-        name: this.state.selected.name, 
-        rating: rating,
-        description: description,
-        abv: this.state.selected.abv
-      })
+      data: JSON.stringify(beer)
     };
 
     $.ajax(ajaxOptions)

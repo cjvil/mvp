@@ -10,20 +10,27 @@ db.once('open', () => {
     name: String,
     rating: Number,
     description: String,
-    abv: Number
+    abv: Number,
+    style: String,
+    favorite: Boolean
   });
 
   const Beer = mongoose.model('Beer', beerSchema);
 
   const addEntry = (beer, callback) => {
-    console.log('adding entry');
+    console.log('adding entry', beer);
 
-    let beerEntry = new Beer({
+    let parameters = {
       name: beer.name,
       rating: beer.rating,
       description: beer.description,
-      abv: Number.parseFloat(beer.abv)
-    });
+      abv: Number.parseFloat(beer.abv),
+      favorite: false
+    };
+
+    parameters.style = beer.style ? beer.style.name : '';
+
+    let beerEntry = new Beer(parameters);
 
     beerEntry.save((err, result) => {
       console.log('saved entry, ', result);
@@ -44,6 +51,10 @@ db.once('open', () => {
       callback(results);
     })
     .sort(sortQuery);
+  };
+
+  const retrieveFavorites = () => {
+
   };
 
   module.exports.addEntry = addEntry;
