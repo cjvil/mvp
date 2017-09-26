@@ -14,13 +14,12 @@ const list = [
 class App extends React.Component {
   constructor() {
     super();
+
     this.submit = this.submit.bind(this);
 
     this.state = {
-      list: list
+      list: []
     };
-
-    console.log(this.state.list);
   }
 
   render() {
@@ -34,18 +33,22 @@ class App extends React.Component {
     );
   }
 
+  componentDidMount() {
+    this.getList();
+  }
+
   getList() {
-    console.log('getting something at least');
     $.ajax('http://localhost:8332/list')
       .done((data) => {
+
         console.log('Retrieved data from server', data);
-        console.log('Retrieved data from server', typeof data);
+
         this.setState({
           list: data
         });
       })
       .fail(() => {
-        console.log('AJAX error');
+        console.log('Error getting data from server');
       });
   }
 
@@ -67,7 +70,7 @@ class App extends React.Component {
         console.log('Submitted: ', name + ' ' + rating + ' ' + description);
       })
       .fail(() => {
-        console.log('AJAX error');
+        console.log('Error POSTing data');
       });
 
   }
