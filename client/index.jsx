@@ -27,7 +27,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <ResultsList results={this.results}/>
+        <ResultsList results={this.state.results}/>
         <EntryForm submit={this.submit}/>
         <BeerEntryList list={this.state.list}/>
       </div>
@@ -39,7 +39,6 @@ class App extends React.Component {
     this.search('banana');
   }
 
-  // BreweryDB api doesn't support CORS, need to move API GET req to server
   search(query) {
    let ajaxOptions = {
       url: 'http://localhost:8332/search',
@@ -52,7 +51,10 @@ class App extends React.Component {
 
     $.ajax(ajaxOptions)
       .done((data) => {
-        console.log(data);
+        this.setState({
+          results: JSON.parse(data)
+        });
+        console.log(this.state.results);
         console.log('Searched for: ', query);
       })
       .fail(() => {

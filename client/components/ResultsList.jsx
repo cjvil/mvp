@@ -5,9 +5,13 @@ import Result from './Result.jsx';
 const ResultsList = (props) => {
   console.log('results here: ', props.results);
 
+  let renderedResults = props.results.map((result, index) => {
+    return <Result result={result} index={index}/>
+  });
+
   return (
     <div className='result-entry-list'>
-      <Result />
+      {renderedResults}
     </div>
   );  
 }
