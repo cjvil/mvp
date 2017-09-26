@@ -19,18 +19,21 @@ class App extends React.Component {
 
     this.submit = this.submit.bind(this);
     this.search = this.search.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
 
     this.state = {
       list: [],
-      results: []
+      results: [],
+      selected: {}
     };
   }
 
   render() {
+    console.log(this.state.selected);
     return (
       <div>
         <SearchForm search={this.search} />
-        <ResultsList results={this.state.results}/>
+        <ResultsList results={this.state.results} select={this.handleSelect}/>
         <EntryForm submit={this.submit}/>
         <BeerEntryList list={this.state.list}/>
       </div>
@@ -78,6 +81,12 @@ class App extends React.Component {
       .fail(() => {
         console.log('Error getting data from server');
       });
+  }
+
+  handleSelect(result) {
+    this.setState({
+      selected: result
+    });
   }
 
   submit(name, rating, description) {

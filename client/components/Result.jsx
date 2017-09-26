@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 const Result = (props) => {    
     return (
-      <div className='result'>
+      <div className='result' onClick={() => props.select(props.result)}>
         <div>Name: {props.result.name}</div>
       </div>
     );

@@ -6,7 +6,7 @@ const ResultsList = (props) => {
   console.log('results here: ', props.results);
 
   let renderedResults = props.results.map((result, index) => {
-    return <Result result={result} index={index}/>
+    return <Result select={props.select} result={result} key={index}/>
   });
 
   return (
