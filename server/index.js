@@ -23,17 +23,16 @@ app.post('/list', (req, res) => {
   db.addEntry(req.body, (result) => {
     res.send('POSTed to list ');
   });
-
 });
 
 app.post('/search', (req, res) => {
-  // let parsed = JSON.parse(req.body);
-  console.log('req body ', req.body) // might not be needed if just string
+  console.log('req body ', typeof req.body) // OBJECT
+  
   let options = {
     url: 'http://api.brewerydb.com/v2/search',
     method: 'GET',
     qs: {
-        q: 'torpedo',
+        q: req.body.query, // TODO: replace with search query
         type: 'beer',
         key: API_KEY,
         format: 'json'
@@ -41,9 +40,8 @@ app.post('/search', (req, res) => {
   };
 
   request(options, (error, response, body) => {
-    console.log('request sent');
-    console.log(response);
-    res.send(response);
+    console.log(typeof body); //STRING
+    res.send(body);
   });
 
 });
