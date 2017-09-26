@@ -24,8 +24,8 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.selected);
-    console.log('sort', this.setSortParameter);
+    // console.log(this.state.selected);
+    console.log('sort', this.state.sortParameter);
     return (
       <div>
         <SearchForm search={this.search} />
@@ -53,9 +53,12 @@ class App extends React.Component {
   }
 
   setSortParameter(sortBy) {
+    let sortObj = {};
+    sortObj[sortBy] = -1;
+
     this.setState({
-      sortParameter: {sortBy: -1}
-    });
+      sortParameter: sortObj
+    }, this.getList);
   }
 
   search(query) {
@@ -82,6 +85,7 @@ class App extends React.Component {
   }
 
   getList() {
+    console.log('calling getlist');
     let ajaxOptions = {
       url: 'http://localhost:8332/list',
       method: 'GET',

@@ -10,7 +10,7 @@ db.once('open', () => {
     name: String,
     rating: Number,
     description: String,
-    abv: String
+    abv: Number
   });
 
   const Beer = mongoose.model('Beer', beerSchema);
@@ -22,7 +22,7 @@ db.once('open', () => {
       name: beer.name,
       rating: beer.rating,
       description: beer.description,
-      abv: beer.abv
+      abv: Number.parseFloat(beer.abv)
     });
 
     beerEntry.save((err, result) => {
