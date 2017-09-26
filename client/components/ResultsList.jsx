@@ -5,11 +5,9 @@ import Result from './Result.jsx';
 const ResultsList = (props) => {
   console.log('results here: ', props.results);
 
-  
-
   return (
     <div className='result-entry-list'>
-      results
+      <Result />
     </div>
   );  
 }

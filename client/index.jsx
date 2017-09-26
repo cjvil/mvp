@@ -4,6 +4,7 @@ import BeerEntryList from './components/BeerEntryList.jsx';
 import EntryForm from './components/EntryForm.jsx';
 import ResultsList from './components/ResultsList.jsx'
 import $ from 'jquery';
+import API_KEY from './brewerydb.js';
 
 // dummy data
 const list = [
@@ -19,14 +20,15 @@ class App extends React.Component {
     this.submit = this.submit.bind(this);
 
     this.state = {
-      list: []
+      list: [],
+      results: []
     };
   }
 
   render() {
     return (
       <div>
-        <ResultsList />
+        <ResultsList results={this.results}/>
         <EntryForm submit={this.submit}/>
         <BeerEntryList list={this.state.list}/>
       </div>
@@ -35,6 +37,32 @@ class App extends React.Component {
 
   componentDidMount() {
     this.getList();
+    this.search();
+  }
+
+  // BreweryDB api doesn't support CORS, need to move API GET req to server
+  search(query) {
+    let ajaxOptions = {
+      url: 'http://api.brewerydb.com/v2/search',
+      data: {
+        q: 'torpedo',
+        type: 'beer',
+        key: API_KEY,
+        format: 'json'
+      }
+    };
+
+    $.ajax(ajaxOptions)
+      .done((data) => {
+        console.log('Retrieved results from API', data);
+
+        this.setState({
+          results: data
+        });
+      })
+      .fail(() => {
+        console.log('Error getting results from API');
+      });
   }
 
   getList() {

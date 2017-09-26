@@ -4,9 +4,11 @@ import ReactDOM from 'react-dom';
 const Result = (props) => {    
     return (
       <div className='result'>
-        <div>Name: {props.name}</div>
+        Result
       </div>
     );
 }
 
 export default Result;
+
+//<div>Name: {props.name}</div>
