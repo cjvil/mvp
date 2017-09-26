@@ -95,7 +95,8 @@ class App extends React.Component {
       method: 'POST',
       contentType: 'application/json',
       data: JSON.stringify({
-        name: name,
+        // name: name,
+        name: this.state.selected.name, 
         rating: rating,
         description: description
       })
