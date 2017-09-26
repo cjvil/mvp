@@ -12,13 +12,13 @@ app.listen(port, () => {
 
 app.get('/list', (req, res) => {
   db.retrieveAllEntries((results) => {
-    res.send('Got list: ' + results);
+    res.send(results);
   });
 });
 
 app.post('/list', (req, res) => {
   db.addEntry(req.body, (result) => {
-    res.send('POSTed to list');
+    res.send('POSTed to list ');
   });
 
 });
