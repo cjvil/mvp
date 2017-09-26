@@ -13,24 +13,36 @@ class App extends React.Component {
     this.submit = this.submit.bind(this);
     this.search = this.search.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
+    this.setSortParameter = this.setSortParameter.bind(this);
 
     this.state = {
       list: [],
       results: [],
-      selected: {},
+      selected: {name: 'none selected'},
       sortParameter: {rating: -1}
     };
   }
 
   render() {
     console.log(this.state.selected);
+    console.log('sort', this.setSortParameter);
     return (
       <div>
         <SearchForm search={this.search} />
-        RESULTS
-        <ResultsList results={this.state.results} select={this.handleSelect}/>
-        <EntryForm submit={this.submit}/>
-        <BeerEntryList list={this.state.list}/>
+        <div id="results">
+          <h3>RESULTS</h3>
+          <ResultsList results={this.state.results} select={this.handleSelect}/>
+        </div>
+
+        <div id="add-entry">
+          <h3>Adding entry for: {this.state.selected.name}</h3>
+          <EntryForm submit={this.submit}/>
+        </div>
+
+        <div id="journal">
+          <h3>BeerJournal</h3>
+          <BeerEntryList list={this.state.list} sort={this.setSortParameter}/>
+        </div>
       </div>
     );
   }
@@ -38,6 +50,12 @@ class App extends React.Component {
   componentDidMount() {
     this.getList();
     // this.search('banana');
+  }
+
+  setSortParameter(sortBy) {
+    this.setState({
+      sortParameter: {sortBy: -1}
+    });
   }
 
   search(query) {

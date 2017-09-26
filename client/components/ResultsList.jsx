@@ -9,6 +9,14 @@ const ResultsList = (props) => {
     return <Result select={props.select} result={result} key={index}/>
   });
 
+  if(props.results.length === 0) {
+    return (
+      <div className='result-entry-list'>
+        Enter a search term
+      </div>
+    )
+  }
+
   return (
     <div className='result-entry-list'>
       {renderedResults}

@@ -29,7 +29,7 @@ class SearchForm extends React.Component {
   render() {
     return (
       <div>
-        SEARCH
+        <h3>SEARCH</h3>
         <input type="text" className="query" value={this.state.query} onChange={this.getValue}></input>
         <button className="submit-search" onClick={this.submitSearch}>Submit</button>
       </div>

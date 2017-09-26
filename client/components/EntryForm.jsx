@@ -29,8 +29,10 @@ class EntryForm extends React.Component {
   render() {
     return (
       <div>
-        RATING <input type="text" className="rating" value={this.state.rating} onChange={this.getValue}></input>
-        THOUGHTS <input type="text" className="description" value={this.state.description} onChange={this.getValue}></input>
+        <h4>RATING</h4>
+        <input type="text" className="rating" value={this.state.rating} onChange={this.getValue}></input>
+        <h4>THOUGHTS</h4>
+        <input type="text" className="description" value={this.state.description} onChange={this.getValue}></input>
         <button className="submit" onClick={this.submitEntry}>Submit</button>
       </div>
     );
