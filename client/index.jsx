@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import BeerEntryList from './components/BeerEntryList.jsx';
 import EntryForm from './components/EntryForm.jsx';
+import ResultsList from './components/ResultsList.jsx'
 import $ from 'jquery';
 
 // dummy data
@@ -25,9 +26,8 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <div id="entry-form">
-          <EntryForm submit={this.submit}/>
-        </div>
+        <ResultsList />
+        <EntryForm submit={this.submit}/>
         <BeerEntryList list={this.state.list}/>
       </div>
     );
