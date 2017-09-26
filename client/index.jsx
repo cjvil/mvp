@@ -36,10 +36,29 @@ class App extends React.Component {
 
   componentDidMount() {
     this.getList();
-    this.search();
+    this.search('banana');
   }
 
   // BreweryDB api doesn't support CORS, need to move API GET req to server
+  search(query) {
+   let ajaxOptions = {
+      url: 'http://localhost:8332/search',
+      method: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        query: query
+      })
+    };
+
+    $.ajax(ajaxOptions)
+      .done((data) => {
+        console.log(data);
+        console.log('Searched for: ', query);
+      })
+      .fail(() => {
+        console.log('Error POSTing search');
+      });
+  }
 
   getList() {
     $.ajax('http://localhost:8332/list')

@@ -27,7 +27,7 @@ app.post('/list', (req, res) => {
 
 app.post('/search', (req, res) => {
   console.log('req body ', typeof req.body) // OBJECT
-  
+
   let options = {
     url: 'http://api.brewerydb.com/v2/search',
     method: 'GET',
@@ -41,7 +41,9 @@ app.post('/search', (req, res) => {
 
   request(options, (error, response, body) => {
     console.log(typeof body); //STRING
-    res.send(body);
+    let parsedBody = JSON.parse(body);
+
+    res.send(JSON.stringify(parsedBody.data));
   });
 
 });
