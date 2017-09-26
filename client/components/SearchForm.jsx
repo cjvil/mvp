@@ -22,12 +22,14 @@ class SearchForm extends React.Component {
   }
 
   submitSearch() {
+    console.log(this.state.query);
     this.props.search(this.state.query);
   }
 
   render() {
     return (
       <div>
+        SEARCH
         <input type="text" className="query" value={this.state.query} onChange={this.getValue}></input>
         <button className="submit-search" onClick={this.submitSearch}>Submit</button>
       </div>

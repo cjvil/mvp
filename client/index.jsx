@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import BeerEntryList from './components/BeerEntryList.jsx';
 import EntryForm from './components/EntryForm.jsx';
 import ResultsList from './components/ResultsList.jsx'
+import SearchForm from './components/SearchForm.jsx'
 import $ from 'jquery';
 
 // dummy data
@@ -17,6 +18,7 @@ class App extends React.Component {
     super();
 
     this.submit = this.submit.bind(this);
+    this.search = this.search.bind(this);
 
     this.state = {
       list: [],
@@ -27,6 +29,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <SearchForm search={this.search} />
         <ResultsList results={this.state.results}/>
         <EntryForm submit={this.submit}/>
         <BeerEntryList list={this.state.list}/>
@@ -36,7 +39,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.getList();
-    this.search('banana');
+    // this.search('banana');
   }
 
   search(query) {
