@@ -34,4 +34,4 @@ bower_components/
 .floo
 .flooignore
 
-client/brewerydb.js
+server/brewerydb.js

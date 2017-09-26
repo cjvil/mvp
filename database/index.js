@@ -39,6 +39,9 @@ db.once('open', () => {
       }
       console.log('found: ', results);
       callback(results);
+    })
+    .sort({
+      rating: -1
     });
   };
 

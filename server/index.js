@@ -3,6 +3,9 @@ const app = express();
 const port = 8332;
 const db = require('../database/index.js');
 const bodyParser = require('body-parser');
+const request = require('request');
+//TODO require api key
+const API_KEY = require('./brewerydb.js');
 
 app.use(bodyParser.json());
 
@@ -19,6 +22,28 @@ app.get('/list', (req, res) => {
 app.post('/list', (req, res) => {
   db.addEntry(req.body, (result) => {
     res.send('POSTed to list ');
+  });
+
+});
+
+app.post('/search', (req, res) => {
+  // let parsed = JSON.parse(req.body);
+  console.log('req body ', req.body) // might not be needed if just string
+  let options = {
+    url: 'http://api.brewerydb.com/v2/search',
+    method: 'GET',
+    qs: {
+        q: 'torpedo',
+        type: 'beer',
+        key: API_KEY,
+        format: 'json'
+    }
+  };
+
+  request(options, (error, response, body) => {
+    console.log('request sent');
+    console.log(response);
+    res.send(response);
   });
 
 });
