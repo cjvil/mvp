@@ -14,7 +14,11 @@ app.listen(port, () => {
 })
 
 app.get('/list', (req, res) => {
-  db.retrieveAllEntries((results) => {
+
+  console.log('GET req query: ', req.query);
+  console.log('GET req data: ', req.data);
+  db.retrieveAllEntries(req.query.sort, (results) => {
+
     res.send(results);
   });
 });
@@ -32,7 +36,7 @@ app.post('/search', (req, res) => {
     url: 'http://api.brewerydb.com/v2/search',
     method: 'GET',
     qs: {
-        q: req.body.query, // TODO: replace with search query
+        q: req.body.query,
         type: 'beer',
         key: API_KEY,
         format: 'json'

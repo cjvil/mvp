@@ -17,7 +17,8 @@ class App extends React.Component {
     this.state = {
       list: [],
       results: [],
-      selected: {}
+      selected: {},
+      sortParameter: {rating: -1}
     };
   }
 
@@ -63,7 +64,13 @@ class App extends React.Component {
   }
 
   getList() {
-    $.ajax('http://localhost:8332/list')
+    let ajaxOptions = {
+      url: 'http://localhost:8332/list',
+      method: 'GET',
+      data: {sort: this.state.sortParameter}
+    };
+
+    $.ajax(ajaxOptions)
       .done((data) => {
 
         console.log('Retrieved data from server', data);

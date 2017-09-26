@@ -32,8 +32,9 @@ db.once('open', () => {
 
   };
 
-  const retrieveAllEntries = (callback) => {
+  const retrieveAllEntries = (sortQuery, callback) => {
     console.log('retrieving all entries');
+    console.log('sort query ', JSON.stringify(sortQuery) + typeof sortQuery);
 
     Beer.find((err, results) => {
       if(err) {
@@ -42,9 +43,7 @@ db.once('open', () => {
       console.log('found: ', results);
       callback(results);
     })
-    .sort({
-      rating: -1
-    });
+    .sort(sortQuery);
   };
 
   module.exports.addEntry = addEntry;
