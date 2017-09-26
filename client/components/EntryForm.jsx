@@ -5,7 +5,6 @@ class EntryForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
       rating: '',
       description: ''
     };
@@ -24,15 +23,14 @@ class EntryForm extends React.Component {
   }
 
   submitEntry() {
-    this.props.submit(this.state.name, this.state.rating, this.state.description);
+    this.props.submit(this.state.rating, this.state.description);
   }
 
   render() {
     return (
       <div>
-        <input type="text" className="name" value={this.state.name} onChange={this.getValue}></input>
-        <input type="text" className="rating" value={this.state.rating} onChange={this.getValue}></input>
-        <input type="text" className="description" value={this.state.description} onChange={this.getValue}></input>
+        RATING <input type="text" className="rating" value={this.state.rating} onChange={this.getValue}></input>
+        THOUGHTS <input type="text" className="description" value={this.state.description} onChange={this.getValue}></input>
         <button className="submit" onClick={this.submitEntry}>Submit</button>
       </div>
     );

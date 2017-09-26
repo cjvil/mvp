@@ -6,13 +6,6 @@ import ResultsList from './components/ResultsList.jsx'
 import SearchForm from './components/SearchForm.jsx'
 import $ from 'jquery';
 
-// dummy data
-const list = [
-  {name: 'Campfire Stout', rating: 2, description: 'Tasted like campfires, gross'},
-  {name: 'Worst Beer Ever', rating: 10, description: 'Sooo good'},
-  {name: 'Dolphin Blue Brew', rating: 7, description: 'Fresh taste but made from dolphins :('}
-];
-
 class App extends React.Component {
   constructor() {
     super();
@@ -33,6 +26,7 @@ class App extends React.Component {
     return (
       <div>
         <SearchForm search={this.search} />
+        RESULTS
         <ResultsList results={this.state.results} select={this.handleSelect}/>
         <EntryForm submit={this.submit}/>
         <BeerEntryList list={this.state.list}/>
@@ -89,7 +83,8 @@ class App extends React.Component {
     });
   }
 
-  submit(name, rating, description) {
+  submit(rating, description) {
+    console.log('submitting abv, ', this.state.selected.abv);
     let ajaxOptions = {
       url: 'http://localhost:8332/list',
       method: 'POST',
@@ -98,7 +93,8 @@ class App extends React.Component {
         // name: name,
         name: this.state.selected.name, 
         rating: rating,
-        description: description
+        description: description,
+        abv: this.state.selected.abv
       })
     };
 
